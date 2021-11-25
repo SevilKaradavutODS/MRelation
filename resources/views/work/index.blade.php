@@ -46,7 +46,7 @@
               <td>{{$w->name}}</td>
               <td>{{$w->status}}</td>
               <td>{{$w->parent_id}}</td>
-              <td>{{ \App\Http\Controllers\WorkController::getParentsTree($w, $w->title) }}</td>
+              <td>{{ \App\Http\Controllers\WorkController::getParentsTree($w, $w->name) }}</td>
               <td><a href="{{ route('work_edit', ['id' => $w->id]) }}"><button type="button" style="background-color:lightgreen;">Düzenle</button></a>
                 <a href="{{ route('work_destroy', ['id' => $w->id]) }}" onclick="return confirm('Silmek istediğinize emin misiniz?')"><button type="button" style="background-color:#ff0000;">Sil</button></a>
               </td>

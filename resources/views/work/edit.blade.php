@@ -50,14 +50,14 @@
                         </div>
                         <div class="form-group">
                             <label class="col-form-label" for="inputWarning"><i class="far fa-bell"></i>Durum</label>
-                            <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Evet/Hayır" value="{{ $workedit->status }}">
+                            <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Evet/Hayır" name="status" value="{{ $workedit->status }}">
                         </div>
 
                         <select class="form-control select2" name="parent_id" id="">
                             <option value="0" selected="selected">Main Kategori</option>
-                            @foreach($works as $w)
-                            <option value="{{$w->id}}" @if ($w->id == $data->parent_id)  selected="selected"  @endif>
-                            {{ \App\Http\Controllers\WorkController::getParentsTree($w, $w->title) }}
+                            @foreach($workedit as $w)
+                            <option value="{{$w->id}}" @if($w->id == $data->parent_id)  selected="selected"  @endif>
+                            {{ \App\Http\Controllers\WorkController::getParentsTree($w, $w->name) }}
                             </option>
                             @endforeach
 

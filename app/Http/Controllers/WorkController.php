@@ -11,13 +11,15 @@ class WorkController extends Controller
 
     protected $appends = ['getParentsTree'];
 
-    public static function getParentsTree($category, $title){
+    public static function getParentsTree($category, $name){
         if($category->parent_id == 0){
-            return $title;
+            return $name;
         }
 
         $parent = Work::find($category->parent_id);
-        $title = $parent->title . ' > ' . $title;
+        $name = $parent->name . ' > ' . $name;
+
+        return WorkController::getParentsTree($parent, $name);
     }
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class WorkController extends Controller
     public function index()
     {
         //$works = Work::all();
-        $works = Work::with( relations: 'children')->get();
+        $works = Work::with(relations: 'children')->get();
        return view('work.index', ['works' => $works]);
     }
 
@@ -38,7 +40,8 @@ class WorkController extends Controller
      */
     public function create()
     {
-        return view('work.create');
+        $works = Work::with(relations: 'children')->get();
+        return view('work.create', ['works' => $works]);
     }
 
     /**
@@ -53,6 +56,7 @@ class WorkController extends Controller
         $data->type = $request->input('type');
         $data->name = $request->input('name');
         $data->status = $request->input('status');
+        $data->parent_id = $request->input('parent_id');
         $data->save();
         $message = "İş Kaydedildi.";
         return redirect()->route('work')->with('message', $message);
@@ -92,9 +96,10 @@ class WorkController extends Controller
     public function update(Request $request, $id)
     {
         $data = Work::find($id);
-        $data->name = $request->input('type');
+        $data->type = $request->input('type');
         $data->name = $request->input('name');
-        $data->name = $request->input('status');
+        $data->status = $request->input('status');
+        $data->parent_id = $request->input('parent_id');
         $data->update($request->all());
         $data->save();
 
