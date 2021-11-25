@@ -11,6 +11,15 @@ class WorkController extends Controller
 
     protected $appends = ['getParentsTree'];
 
+
+    public function work_project($id)
+    {
+        $work = Work::find($id);
+        return $work->id;
+    }
+
+
+
     public static function getParentsTree($category, $name){
         if($category->parent_id == 0){
             return $name;

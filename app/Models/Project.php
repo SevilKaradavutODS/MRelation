@@ -13,11 +13,11 @@ class Project extends Model
 
     public function company()
     {
-        return $this->belongsTo(Company::class)->withDefault();
+        return $this->belongsTo(Company::class);
     }
 
     public function work()
     {
-        return $this->belongsTo(Work::class)->withDefault();
+        return $this->belongsTo(Work::class);
     }
 }

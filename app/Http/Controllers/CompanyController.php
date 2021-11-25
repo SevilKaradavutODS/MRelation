@@ -8,6 +8,15 @@ use Illuminate\Support\Facades\Redirect;
 
 class CompanyController extends Controller
 {
+
+    public function company_project($id)
+    {
+        $company = Company::find($id);
+        return $company->id;
+    }
+
+
+
     /**
      * Display a listing of the resource.
      *

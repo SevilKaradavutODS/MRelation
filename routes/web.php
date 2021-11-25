@@ -51,3 +51,7 @@ Route::post('/project', [ProjectController::class, 'store'])->name('project_stor
 Route::get('/project/edit/{id}', [ProjectController::class, 'edit'])->name('project_edit');
 Route::post('/project/update/{id}', [ProjectController::class, 'update'])->name('project_update');
 Route::get('/project_destroy/{id}', [ProjectController::class, 'destroy'])->name('project_destroy');
+
+
+Route::get('/company_project/{id}', [CompanyController::class, 'company'])->name('company_project');
+Route::get('/work_project/{id}', [WorkController::class, 'work'])->name('work_project');
