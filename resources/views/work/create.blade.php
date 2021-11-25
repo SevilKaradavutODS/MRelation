@@ -62,19 +62,20 @@
                         <div class="form-group">
                         <label class="col-form-label" for="inputWarning"><i class="far fa-bell"></i>Parent Kategori</label>
 
-                        <select class="form-control select2" name="parent_id" id="">
+                        <select class="form-control select2" name="parent_id">
                         <option value="0" selected="selected">Main Kategori</option>
                         @foreach($works as $w)
-                            <option value="{{ $w->id }} {{ \App\Http\Controllers\WorkController::getParentsTree($w, $w->title) }}"></option>
-                        @endforeach
+                            <option value="{{ $w->id }}"> {{ \App\Http\Controllers\WorkController::getParentsTree($w, $w->name) }}"</option>
+                        @endforeach                   
 
                         </select>
+
                         </div>
                         <br>
-                    <a href="{{URL('work')}}"> <input type="submit" value="Gönder" /> </a> <br>
+                    <a href="{{ route('work')}}"> <input type="submit" value="Gönder" /> </a> <br>
                     </div>
                     <br>
-                    <button type="button"><a href="{{URL('work')}}">İşler</a></button>
+                    <button type="button"><a href="{{ route('work')}}">İşler</a></button>
             </form>
         </div>
         <!-- /.card-body -->

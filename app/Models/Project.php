@@ -8,6 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     use HasFactory;
-    protected $table="project";
+    protected $table = "project";
     protected $fillable = [''];
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    public function work()
+    {
+        return $this->belongsTo(Work::class);
+    }
 }

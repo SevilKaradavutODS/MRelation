@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use App\Models\Project;
+use App\Models\Work;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -13,9 +15,13 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
-        $projects = Project::all();
+        // $projects = Project::all();
+        $projects = Project::with('company')->get();
+       
         return view('project.index', ['projects' => $projects]);
     }
 
@@ -26,7 +32,10 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('project.create');
+        $datalist = Company::all();
+        $works = Work::all();
+       // dd($datalist);
+        return view('project.create', ['datalist' => $datalist, 'works' => $works]);
     }
 
     /**
@@ -38,6 +47,8 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $data = new Project();
+        $data->company_id = $request->input('company_id');
+        $data->work_id = $request->input('work_id');
         $data->contract_amount = $request->input('contract_amount');
         $data->contract_date = $request->input('contract_date');
         $data->state = $request->input('state');

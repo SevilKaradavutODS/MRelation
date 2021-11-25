@@ -10,4 +10,11 @@ class Company extends Model
     use HasFactory;
     protected $table="company";
     protected $fillable = [''];
+
+    public function projects(){
+        return $this->hasMany(Project::class);
+    } 
+  
+
+
 }

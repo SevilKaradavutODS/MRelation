@@ -25,7 +25,7 @@
             <div class="card-body">
                 <h3 class="card-title"></h3>
             </div>
-            <form action="{{route('work_update', ['id' => $workedit->id])}}" method="post">
+            <form action="{{route('work_update', ['id' => $data->id])}}" method="post">
                 @csrf
                 <div class="card-body">
 
@@ -34,7 +34,7 @@
                             <!-- select -->
                             <div class="form-group">
                                 <label>İş Türü</label>
-                                <select class="form-control" name="type" value="{{ $workedit->type }}">
+                                <select class="form-control" name="type" value="{{ $data->type }}">
                                     <option name="type">A</option>
                                     <option name="type">B</option>
                                     <option name="type">C</option>
@@ -46,28 +46,27 @@
                         <!-- input states -->
                         <div class="form-group">
                             <label class="col-form-label" for="inputSuccess"><i class="fas fa-check"></i>İş Adı</label>
-                            <input type="text" class="form-control is-valid" id="inputSuccess" placeholder="" name="name" ; value="{{ $workedit->name }}">
+                            <input type="text" class="form-control is-valid" id="inputSuccess" placeholder="" name="name" ; value="{{ $data->name }}">
                         </div>
                         <div class="form-group">
                             <label class="col-form-label" for="inputWarning"><i class="far fa-bell"></i>Durum</label>
-                            <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Evet/Hayır" value="{{ $workedit->status }}">
+                            <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Evet/Hayır" name="status" value="{{ $data->status }}">
                         </div>
 
                         <select class="form-control select2" name="parent_id" id="">
                             <option value="0" selected="selected">Main Kategori</option>
-                            @foreach($works as $w)
-                            <option value="{{$w->id}}" @if ($w->id == $data->parent_id)  selected="selected"  @endif>
-                            {{ \App\Http\Controllers\WorkController::getParentsTree($w, $w->title) }}
+                        @foreach($works as $data)
+                            <option value="{{$data->id}}" @if ($data->id == $data->parent_id)  selected="selected"  @endif >
+                            {{ \App\Http\Controllers\WorkController::getParentsTree($data, $data->name) }}
                             </option>
-                            @endforeach
-
+                         
+@endforeach
                         </select>
 
                         <br>
                         <a href="{{URL('work')}}"> <input type="submit" value="Gönder" /> </a> <br>
                     </div>
-                    <br>
-                    <button type="button"><a href="{{URL('work')}}">İşler</a></button>
+                 
                 </div>
                 <br>
                 <button type="button"><a href="{{URL('work')}}">İşler</a></button>

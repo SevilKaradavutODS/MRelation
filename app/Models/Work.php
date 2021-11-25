@@ -16,15 +16,15 @@ class Work extends Model
     ];
 
      public function projects(){
-        return $this->hasMany(related:Project::class);
+        return $this->hasMany(Project::class)->select('name');
     } 
 
     public function parent(){
-        return $this->belongsTo(related:Work::class, foreignKey:'parent_id');
+        return $this->belongsTo(Work::class, foreignKey:'parent_id');
     }
 
     public function children(){
-        return $this->hasMany(related:Work::class, foreignKey:'parent_id');
+        return $this->hasMany(Work::class, foreignKey:'parent_id');
     }
 
 

@@ -23,44 +23,64 @@
         </div>
       </div>
       <div class="card-body">
-      <h3 class="card-title"></h3>
-              </div>
-              <form action="{{ route('project_store') }}" method="post">
-                  @csrf
-              <div class="card-body">
-                <input class="form-control form-control-lg" type="text" placeholder="Sözleşme Miktarı" name="contract_amount";>
-                <br>
-                <input class="form-control form-control-lg" type="text" placeholder="Sözleşme Tarihi" name="contract_date";>
-                <br>
-                <input class="form-control form-control-lg" type="text" placeholder="Durum" name="state";>
-                <br>
-                <input class="form-control form-control-lg" type="text" placeholder="Başlama Tarihi" name="start_date";>
-                <br>
-                <input class="form-control form-control-lg" type="text" placeholder="Bitiş Tarihi" name="end_date";>
-                <br>
-                <input class="form-control form-control-lg" type="text" placeholder="Aktiflik: Evet/Hayır" name="status";>
-                <br>
-                <a href="{{URL('project')}}"> <input type="submit" value="Gönder" /> </a> <br>
-              </div>
-              <br>
-            <button type="button"><a href="{{URL('project')}}">Projeler</a></button>
-
-</form>
-        
-        <br> <br>
-        
+        <h3 class="card-title"></h3>
       </div>
-      <!-- /.card-body -->
+      <form action="{{ route('project_store') }}" method="post">
+        @csrf
+        <div class="card-body">
 
-      <div class="card-footer">
+          
+          <select name="company_id">
+          @foreach($datalist as $company)
+            <option value="{{$company->id}}">{{$company->name}}</option>
+            @endforeach
+          </select>
+       
+          
 
-      </div>
-      <!-- /.card-footer-->
+          
+          
+          <select name="work_id">
+          @foreach($works as $work)
+            <option value="{{$work->id}}">{{$work->name}}</option>
+            @endforeach
+          </select>
+        
+
+
+          <input class="form-control form-control-lg" type="text" placeholder="Sözleşme Miktarı" name="contract_amount" ;>
+          <br>
+          <input class="form-control form-control-lg" type="date" placeholder="Sözleşme Tarihi" name="contract_date" ;>
+          <br>
+          <input class="form-control form-control-lg" type="text" placeholder="Durum" name="state" ;>
+          <br>
+          <input class="form-control form-control-lg" type="date" placeholder="Başlama Tarihi" name="start_date" ;>
+          <br>
+          <input class="form-control form-control-lg" type="date" placeholder="Bitiş Tarihi" name="end_date" ;>
+          <br>
+          <input class="form-control form-control-lg" type="text" placeholder="Aktiflik: Evet/Hayır" name="status" ;>
+          <br>
+          <a href="{{URL('project')}}"> <input type="submit" value="Gönder" /> </a> <br>
+        </div>
+        <br>
+        <button type="button"><a href="{{URL('project')}}">Projeler</a></button>
+
+      </form>
+
+      <br> <br>
+
     </div>
-    <!-- /.card -->
+    <!-- /.card-body -->
 
-  </section>
-  <!-- /.content -->
+    <div class="card-footer">
+
+    </div>
+    <!-- /.card-footer-->
+</div>
+<!-- /.card -->
+
+</section>
+<!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 
