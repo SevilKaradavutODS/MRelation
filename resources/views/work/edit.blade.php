@@ -55,19 +55,18 @@
 
                         <select class="form-control select2" name="parent_id" id="">
                             <option value="0" selected="selected">Main Kategori</option>
-                            @foreach($data as $w)
-                            <option value="{{$w->id}}"> @if ($w->id == $data->parent_id)  selected="selected"  @endif >
-                            {{ \App\Http\Controllers\WorkController::getParentsTree($w, $w->name) }}
+                        @foreach($works as $data)
+                            <option value="{{$data->id}}" @if ($data->id == $data->parent_id)  selected="selected"  @endif >
+                            {{ \App\Http\Controllers\WorkController::getParentsTree($data, $data->name) }}
                             </option>
-                            @endforeach
-
+                         
+@endforeach
                         </select>
 
                         <br>
                         <a href="{{URL('work')}}"> <input type="submit" value="Gönder" /> </a> <br>
                     </div>
-                    <br>
-                    <button type="button"><a href="{{URL('work')}}">İşler</a></button>
+                 
                 </div>
                 <br>
                 <button type="button"><a href="{{URL('work')}}">İşler</a></button>

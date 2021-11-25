@@ -80,7 +80,7 @@ class WorkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit(Work $work, $id)
+    public function edit(Work $works, $id)
     {
         $data = Work::where('id', $id)->first();
         $works = Work::with('children')->get();
