@@ -77,13 +77,14 @@ class WorkController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Work $work, $id)
     {
-        $workedit = Work::where('id', $id)->first();
-
-        return view('work.edit', ['workedit' => $workedit]);
+        $data = Work::where('id', $id)->first();
+        $works = Work::with('children')->get();
+        return view('work.edit',['data'=> $data, 'works' => $works]);
     }
 
     /**
