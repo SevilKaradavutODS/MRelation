@@ -79,9 +79,11 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
+        $datalist = Company::all();
+        $works = Work::all();
         $projectedit = Project::where('id', $id)->first();
 
-        return view('project.edit', ['projectedit' => $projectedit]);
+        return view('project.edit', ['datalist' => $datalist, 'works' => $works, 'projectedit' => $projectedit]);
     }
 
     /**
@@ -94,6 +96,8 @@ class ProjectController extends Controller
     public function update(Request $request, $id)
     {
         $data = Project::find($id);
+        $data->company_id = $request->input('company_id');
+        $data->work_id = $request->input('work_id');
         $data->contract_amount = $request->input('contract_amount');
         $data->contract_date = $request->input('contract_date');
         $data->state = $request->input('state');
