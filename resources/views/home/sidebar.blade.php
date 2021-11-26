@@ -37,23 +37,23 @@
             <i class="nav-icon fas fa-user"></i>
             <p>Profile</p></a>  </li>
             <li class="nav-item"> 
-            <a href="{{URL('/departmant')}}" class="nav-link">
+            <a href="{{route('departmant')}}" class="nav-link">
             <i class="nav-icon fas fa-align-justify"></i>
             <p>Departmant</p></a>  </li>
             <li class="nav-item"> 
-            <a href="{{URL('/company')}}" class="nav-link">
+            <a href="{{route('company')}}" class="nav-link">
             <i class="nav-icon fas fa-align-justify"></i>
             <p>Company</p></a>  </li>
             <li class="nav-item"> 
-            <a href="{{URL('/work')}}" class="nav-link">
+            <a href="{{route('work')}}" class="nav-link">
             <i class="nav-icon fas fa-align-justify"></i>
             <p>Work</p></a>  </li>
             <li class="nav-item"> 
-            <a href="{{URL('/project')}}" class="nav-link">
+            <a href="{{route('project')}}" class="nav-link">
             <i class="nav-icon fas fa-align-justify"></i>
             <p>Project</p></a>  </li>
             <li class="nav-item"> 
-            <a href="" class="nav-link">
+            <a href="{{route('user')}}" class="nav-link">
             <i class="nav-icon fas fa-align-justify"></i>
             <p>User</p></a>  </li>
             <form method="POST" action="{{ route('logout') }}">

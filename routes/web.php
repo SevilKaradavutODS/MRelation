@@ -3,6 +3,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DepartmantController;
 use App\Http\Controllers\WorkController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -52,6 +53,16 @@ Route::get('/project/edit/{id}', [ProjectController::class, 'edit'])->name('proj
 Route::post('/project/update/{id}', [ProjectController::class, 'update'])->name('project_update');
 Route::get('/project_destroy/{id}', [ProjectController::class, 'destroy'])->name('project_destroy');
 
-
 Route::get('/company_project/{id}', [CompanyController::class, 'company'])->name('company_project');
 Route::get('/work_project/{id}', [WorkController::class, 'work'])->name('work_project');
+
+
+Route::get('/user', [UserController::class, 'index'])->name('user');
+Route::get('/user_create', [UserController::class, 'create'])->name('user_create');
+Route::post('/user', [UserController::class, 'store'])->name('user_store');
+Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('user_edit');
+Route::post('/user/update/{id}', [UserController::class, 'update'])->name('user_update');
+Route::get('/user_destroy/{id}', [UserController::class, 'destroy'])->name('user_destroy');
+
+Route::get('/departmant_user/{id}', [UserController::class, 'departmant'])->name('departmant_user');
+Route::get('/role_user/{id}', [RoleController::class, 'role'])->name('role_user');

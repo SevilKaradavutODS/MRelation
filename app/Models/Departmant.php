@@ -10,4 +10,11 @@ class Departmant extends Model
     use HasFactory;
     protected $table="departmant";
     protected $fillable = [''];
+
+    
+    public function user(){
+        return $this->hasMany(User::class);
+    } 
+
+
 }

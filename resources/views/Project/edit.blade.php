@@ -23,44 +23,64 @@
         </div>
       </div>
       <div class="card-body">
-      <h3 class="card-title"></h3>
-              </div>
-              <form action="{{route('project_update', ['id' => $projectedit->id])}}" method="post">
-                  @csrf
-              <div class="card-body">
-                <input class="form-control form-control-lg" type="text" placeholder="" name="contract_amount"; value="{{ $projectedit->contract_amount }}">
-                <br>
-                <input class="form-control form-control-lg" type="text" placeholder="" name="contract_date"; value="{{ $projectedit->contract_date }}">
-                <br>
-                <input class="form-control form-control-lg" type="text" placeholder="" name="state"; value="{{ $projectedit->state }}">
-                <br>
-                <input class="form-control form-control-lg" type="text" placeholder="" name="start_date"; value="{{ $projectedit->start_Date }}">
-                <br>
-                <input class="form-control form-control-lg" type="text" placeholder="" name="end_Date"; value="{{ $projectedit->end_date }}">
-                <br>
-                <input class="form-control form-control-lg" type="text" placeholder="" name="status"; value="{{ $projectedit->status }}">
-                <br>
-                <a href="{{URL('project')}}"> <input type="submit" value="Gönder" /> </a> <br>
-              </div>
-              <br>
-            <button type="button"><a href="{{URL('project')}}">Projeler</a></button>
-
-</form>
-        
-        <br> <br>
-        
+        <h3 class="card-title"></h3>
       </div>
-      <!-- /.card-body -->
+      <form action="{{route('project_update', ['id' => $projectedit->id])}}" method="post">
+        @csrf
+        <div class="card-body">
 
-      <div class="card-footer">
 
-      </div>
-      <!-- /.card-footer-->
+          <select name="company_id">
+            @foreach($datalist as $company)
+            <option value="{{$company->id}}">{{$company->name}}</option>
+            @endforeach
+          </select>
+
+
+
+
+
+          <select name="work_id">
+            @foreach($works as $work)
+            <option value="{{$work->id}}">{{$work->name}}</option>
+            @endforeach
+          </select>
+
+
+
+          <input class="form-control form-control-lg" type="text" placeholder="" name="contract_amount" ; value="{{ $projectedit->contract_amount }}">
+          <br>
+          <input class="form-control form-control-lg" type="text" placeholder="" name="contract_date" ; value="{{ $projectedit->contract_date }}">
+          <br>
+          <input class="form-control form-control-lg" type="text" placeholder="" name="state" ; value="{{ $projectedit->state }}">
+          <br>
+          <input class="form-control form-control-lg" type="text" placeholder="" name="start_date" ; value="{{ $projectedit->start_Date }}">
+          <br>
+          <input class="form-control form-control-lg" type="text" placeholder="" name="end_Date" ; value="{{ $projectedit->end_date }}">
+          <br>
+          <input class="form-control form-control-lg" type="text" placeholder="" name="status" ; value="{{ $projectedit->status }}">
+          <br>
+          <a href="{{URL('project')}}"> <input type="submit" value="Gönder" /> </a> <br>
+        </div>
+        <br>
+        <button type="button"><a href="{{URL('project')}}">Projeler</a></button>
+
+      </form>
+
+      <br> <br>
+
     </div>
-    <!-- /.card -->
+    <!-- /.card-body -->
 
-  </section>
-  <!-- /.content -->
+    <div class="card-footer">
+
+    </div>
+    <!-- /.card-footer-->
+</div>
+<!-- /.card -->
+
+</section>
+<!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 
