@@ -40,7 +40,13 @@
             <tr>
               <td>{{$d->id}}</td>
               <td>{{$d->name}}</td>
-              <td>{{$d->user_id}}</td>
+              <td>
+              @foreach($users as $user)
+              @if($d->id == $user->departmant_id)
+             {{$user->name}},
+              @endif
+              @endforeach
+              </td>
               <td><a href="{{ route('departmant_edit', ['id' => $d->id]) }}"><button type="button" style="background-color:lightgreen;">Düzenle</button></a>
                 <a href="{{ route('departmant_destroy', ['id' => $d->id]) }}" onclick="return confirm('Silmek istediğinize emin misiniz?')"><button type="button" style="background-color:#ff0000;">Sil</button></a>
               </td>

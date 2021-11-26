@@ -46,7 +46,7 @@
             <tr>
               <td>{{$p->id}}</td>
               <td>{{$p->company->name}}</td>
-              <td>{{$p->work_id}}</td>
+              <td>{{$p->work->name}}</td>
               <td>{{$p->contract_amount}}</td>
               <td>{{$p->contract_date}}</td>
               <td>{{$p->state}}</td>

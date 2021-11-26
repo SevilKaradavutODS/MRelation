@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Departmant;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -15,8 +16,11 @@ class DepartmantController extends Controller
      */
     public function index()
     {
-        $departmants = Departmant::all();
-       return view('departmant.index', ['departmants' => $departmants]);
+       // $departmants = Departmant::all();
+        $departmants = Departmant::with('users')->get();
+        $users = User::all();
+       // dd($departmants);
+       return view('departmant.index', ['departmants' => $departmants, 'users' => $users]);
     }
 
     /**
